@@ -1,0 +1,219 @@
+/* ================= VARIABLES ================= */
+:root {
+  --primary-gold: #f39c12;
+  --light-gold: #ffcc70;
+  --dark-bg: #0a0a0a;
+  --card-bg: #151515;
+}
+
+/* ================= GLOBAL RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-wrapper {
+  background-color: var(--dark-bg);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================= HERO SECTION (DESKTOP) ================= */
+/* ================= HERO SECTION ================= */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 70px);   /* 🔥 subtract navbar height */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.hero-image-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.main-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right top;   /* 🔥 prevents top cut */
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.hero-content-area {
+  position: relative;
+  z-index: 2;
+  padding-left: 4%;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: clamp(55px, 8vw, 110px);
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.gold-text {
+  background: linear-gradient(to right, var(--primary-gold), var(--light-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: #eee;
+  max-width: 550px;
+  line-height: 1.6;
+}
+
+/* ================= INFO STATS ================= */
+.info-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--card-bg);
+  padding: 80px 8%;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+.stat-card h3 {
+  font-size: 42px;
+  color: var(--primary-gold);
+  margin-bottom: 8px;
+}
+
+.stat-card p {
+  color: #888;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* ================= ABOUT SECTION (DESKTOP) ================= */
+.about-section {
+  padding: 120px 8%;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-img-box img {
+  width: 100%;
+  border-radius: 25px;
+  transition: 0.4s ease;
+}
+
+.section-title {
+  font-size: 42px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.about-text-box p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #bbb;
+}
+
+.story-link {
+  color: var(--primary-gold);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 25px;
+}
+
+/* ================= MOBILE VIEW (RESPONSIVE) ================= */
+@media screen and (max-width: 768px) {
+  
+  /* Hero Mobile Fix */
+  .hero {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .hero-image-area {
+    position: relative;
+    height: 60vh; /* Fixed height to prevent face-cutting */
+    width: 100%;
+  }
+
+  .main-hero-img {
+    height: 100%;
+    
+    object-position: top center; /* Focuses on face for mobile portrait */
+  }
+
+  .hero-vignette {
+    /* Vertical fade for mobile stack */
+    background: linear-gradient(to top, var(--dark-bg) 0%, transparent 50%);
+    
+  }
+
+  .hero-content-area {
+    padding: 40px 6% 60px;
+    text-align: center;
+    margin-top: -30px; /* Overlaps vignette to remove black gap */
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  /* Info Stats Mobile */
+  .info-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 60px 6%;
+    gap: 30px;
+  }
+
+  /* ABOUT SECTION MOBILE: PHOTO TOP -> PARAGRAPH BOTTOM */
+  .about-section {
+    padding: 60px 6%;
+  }
+
+  .about-container {
+    display: flex;
+    flex-direction: column; /* Force photo above text */
+    gap: 40px;
+  }
+
+  .about-img-box {
+    width: 100%;
+    order: 1; /* Image first */
+  }
+
+  .about-text-box {
+    width: 100%;
+    order: 2; /* Paragraph second */
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+}
